@@ -89,7 +89,7 @@ UINT MX_USBX_Device_Init(VOID *memory_ptr)
   /* USER CODE END App_USBX_Device_MEM_POOL */
 
   /* USER CODE BEGIN MX_USBX_Device_Init */
-#if (USE_MEMORY_POOL_ALLOCATION == 1)
+#if (USE_STATIC_ALLOCATION == 1)
 
   UCHAR *pointer;
   /* Device framework FS length*/

@@ -45,18 +45,21 @@
 
 /* USER CODE END PV */
 
-#if (USE_MEMORY_POOL_ALLOCATION == 1)
+#if (USE_STATIC_ALLOCATION == 1)
+
+/* USER CODE BEGIN TX_Pool_Buffer */
+/* USER CODE END TX_Pool_Buffer */
 #if defined ( __ICCARM__ )
 #pragma data_alignment=4
 #endif
-/* USER CODE BEGIN TX_Pool_Buffer */
-/* USER CODE END TX_Pool_Buffer */
-
 __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END;
 static TX_BYTE_POOL tx_app_byte_pool;
 
 /* USER CODE BEGIN UX_Device_Pool_Buffer */
 /* USER CODE END UX_Device_Pool_Buffer */
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
+#endif
 __ALIGN_BEGIN static UCHAR  ux_device_byte_pool_buffer[UX_DEVICE_APP_MEM_POOL_SIZE] __ALIGN_END;
 static TX_BYTE_POOL ux_device_app_byte_pool;
 
@@ -77,7 +80,7 @@ VOID tx_application_define(VOID *first_unused_memory)
   /* USER CODE BEGIN  tx_application_define_1*/
 
   /* USER CODE END  tx_application_define_1 */
-#if (USE_MEMORY_POOL_ALLOCATION == 1)
+#if (USE_STATIC_ALLOCATION == 1)
   UINT status = TX_SUCCESS;
   VOID *memory_ptr;
 
